@@ -1,0 +1,115 @@
+@extends('cms.parent')
+
+@section('styles')
+
+@endsection
+
+
+@section('title', 'Index Author')
+
+@section('main-title', 'Index Author')
+
+@section('sub-title', 'index author')
+
+
+@section('content')
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <form action="" method="get" style="margin-bottom:2%;">
+                        <div class="row">
+                            <div class="input-icon col-md-3">
+                                <input type="text" class="form-control" placeholder="Search By email" name='email'
+                                    @if (request()->email) value={{ request()->email }} @endif />
+                                <span>
+                                    <i class="flaticon2-search-1 text-muted"></i>
+                                </span>
+                            </div>
+                            <div class="input-icon col-md-3">
+                                <input type="text" class="form-control" placeholder="Search By Id" name='id'
+                                    @if (request()->id) value={{ request()->id }} @endif />
+                                <span>
+                                    <i class="flaticon2-search-1 text-muted"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-success btn-md" type="submit">Filter</button>
+                                <a href="{{ route('authors.index') }}" class="btn btn-danger">End Filter</a>
+                                <a href="{{ route('authors.create') }}" type="submit" class="btn btn-info">Add New
+                                    Admin</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Full Name</th>
+                        {{-- <th>last Name</th> --}}
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th>City Name</th>
+                        <th>setting</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($authors as $author)
+                        <tr>
+                            <td>{{$author->id}}</td>
+                            <td>
+                                <img class="img-circle img-bordered-sm" src="{{ asset('storage/images/author/' . $author->user->image ?? "") }}" width="60" height="60" alt=" User image">
+                            </td>
+                            <td>{{$author->user->firstname ." ". $author->user->lastname }}</td>
+                            {{-- <td>{{$author->user->lastname ?? ""}}</td> --}}
+                            <td>{{$author->email}}</td>
+                            <td>{{$author->user->gender ?? ""}}</td>
+                            @if ($author->user->status !== 'active')
+                            <td> <span class="badge bg-danger px-3 py-2">{{ $author->user->status }}
+                                </span>
+                            </td>
+                        @else
+                            <td> <span class="badge bg-success px-3 py-2">{{$author->user->status }}
+                                </span> </td>
+                        @endif
+                            <td>{{$author->user->city->name ?? ""}}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button  type="button" onclick="performDestroy({{$author->id}} , this )" class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></button>
+                                    <a href="{{ route('authors.edit' , $author->id ) }}" type="button" class="btn btn-info">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
+                <!-- /.card-body -->
+                {{ $authors->links() }}
+            </div>
+            <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+@endsection
+
+
+@section('scripts')
+<script>
+    function performDestroy(id , reference) {
+        confirmDestroy('/cms/library/authors/'+id , reference)
+    }
+</script>
+@endsection
