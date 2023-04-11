@@ -91,7 +91,7 @@
                 <a href="{{route('books.index')}}" class="info-box-icon bg-blue elevation-1"><i class="fa-solid fa-user-graduate ml-2"></i></a>
 
                 <div class="info-box-content">
-                    <a href="{{route('books.index')}}" class="info-box-text"> Number of Article</a>
+                    <a href="{{route('books.index')}}" class="info-box-text"> Number of Book</a>
                     <a href="{{route('books.index')}}" class="info-box-number">{{$sparCount}}</a>
                 </div>
                 <!-- /.info-box-content -->

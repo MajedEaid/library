@@ -1,0 +1,342 @@
+nav{
+    position: fixed !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5 !important;
+}
+a.nav-link {
+    color: rgba(255, 255, 255, 0.836) !important;
+}
+a.nav-link.active{
+    color: white !important;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light{
+    background-color: rgba(0, 0, 0, 0.918) !important;
+}
+a.navbar-brand{
+    color: white !important;
+}
+
+@media (min-width:992px) {
+    .navbar-nav{
+        position: absolute ;
+        right: 100px;
+}
+}
+.login{
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+}
+.login h2{
+    font-size: 25px;
+    text-align: center;
+    font-family: sans-serif;
+}
+.login label{
+    display: block;
+    font-size: 16px;
+    color: rgb(26, 25, 25);
+}
+input{
+    width: 100%;
+    height: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+input::placeholder{
+   font-size: 14px;
+   color: rgba(0, 0, 0, 0.671);
+   padding-left: 10px;
+}
+.submit-input{
+    background-color: rgb(81, 146, 81);
+    font-weight: 600;
+    border: none;
+    color: white;
+}
+footer{
+    width: 100%;
+   background-color: rgb(240, 243, 247);
+   padding: 12px 0;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}
+.footer-row{
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+footer i{
+    color: rgb(52, 52, 248);
+}
+.login-new{
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    translate: -50% -50%;
+    padding-bottom: 80px;
+    padding-top: 10px;
+}
+.login-new h2{
+    font-size: 25px;
+    text-align: center;
+    font-family: sans-serif;
+}
+.login-new label{
+    display: block;
+    font-size: 16px;
+    color: rgb(26, 25, 25);
+}
+input{
+    width: 100%;
+    height: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+input::placeholder{
+   font-size: 14px;
+   color: rgba(0, 0, 0, 0.671);
+   padding-left: 10px;
+}
+.submit-input{
+    background-color: rgb(81, 146, 81);
+    font-weight: 600;
+    border: none;
+    color: white;
+}
+@media (max-width:768px) {
+    .login{
+        width: 300px;
+    }
+    .login-new{
+        width: 350px;
+    }
+}
+.navbar-light .navbar-toggler-icon{
+    background-color: aliceblue !important;
+    color: black !important;
+}
+.header-home {
+    background: url(../img/header-sareshin.jpg) center ;
+    background-size: cover;
+    text-align: center;
+    height: 400px;
+    position: relative;
+  z-index: 0;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background:  rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+.cont-header-homein{
+   padding-top: 80px;
+}
+.cont-header-homein h1{
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.249);
+    margin-bottom: 10px;
+    font-weight: 1000;
+    font-family: serif;
+    animation: h1 2s infinite both ease-in-out;
+}
+@keyframes h1 {
+    0%{
+        color: white;
+    }
+    50%{
+        color: rgba(255, 255, 255, 0.249);
+    }
+    100%{
+        color: white;
+    }
+}
+.cont-header-homein input {
+    width: 600px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 18px;
+    margin: 15px auto ;
+    border: 2px solid white;
+    background-color: transparent;
+}
+.cont-header-homein input::placeholder{
+    font-size: 15px !important;
+    color: rgba(255, 255, 255, 0.932) !important;
+    font-weight: 600;
+}
+.cont-divs i{
+    margin: 20px 0;
+    font-size: 40px;
+    color: white;
+}
+.cont-divs{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.cont-divs{
+    width: 70%;
+    margin: 30px auto;
+}
+.input-search-div-i{
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    color: white;
+}
+.fa-magnifying-glass{
+    position: absolute;
+    right:20px;
+    top: 30%;
+    cursor: pointer;
+}
+.about{
+    height: 250px;
+    position: relative;
+}
+.div-about-cont{
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+}
+.about h2{
+    font-size: 30px;
+    font-weight: 600;
+}
+.div-about-cont p{
+    font-size: 14px;
+    font-weight: 600;
+    color: #0009;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.section1-dive-whites{
+    width: 100%;
+    height: 300px;
+    background: url(../img/heder2.jpg) center fixed;
+    background-size: cover;
+    padding-bottom: 80px;
+    position: relative;
+    z-index: -5;
+}
+.section1-dive-whites h2{
+    font-size: 25px;
+    font-family: serif;
+    padding-top: 20px;
+    color: white;
+}
+.section1-dive-whites .dvis{
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+}
+.section1-dive-whites .div-tresperd {
+   width: 200px;
+   padding: 40px;
+   margin: 10px auto;
+    background-color: white;
+    border-radius: 30px;
+    border: 5px solid rgb(70, 47, 47);
+}
+.section1-dive-whites .div-tresperd span{
+    font-weight: 600;
+    font-size: 20px;
+}
+table{
+    width: 80%;
+    height: 200px;
+  margin: auto;
+  margin-top: 200px;
+}
+table, tr,td,th{
+    border: 1px solid black;
+    text-align: center;
+}
+table img{
+    width: 20px;
+}
+thead,tfoot{
+    background-color: black;
+    color: white;
+}
+table i{
+    background-color: red;
+    color: white;
+    font-size: 20px;
+}
+@media (max-width:768px) {
+
+    .cont-header-homein input {
+        width: 300px;
+        height: 40px;
+        margin-bottom: 10px;
+        margin: 15px auto ;
+    }
+    .cont-header-homein h1{
+        width: 80%;
+       margin: 0 auto;
+        font-size: 25px;
+    }
+    .section1-dive-whites{
+        height: 600px;
+    }
+    }
+    .section-cards{
+        padding: 50px 0 !important;
+     }
+    .card{
+        width:230px !important;
+        margin:40px auto !important;
+        padding: 0 !important;
+    }
+    .card img{
+        width: 100% !important;
+        height: 250px;
+    }
+    .img-diteals{
+        width: 300px;
+    }
+    .diteals-card{
+        margin: 20px auto !important;
+        padding-top: 100px;
+    }
+    .diteals-card h5 span{
+        color: rgb(172, 25, 25);
+    }
+    .diteals-card .line{
+        width: 100%;
+        height: 2px;
+        border-radius: 18px;
+        background-color: rgb(87, 87, 87);
+        opacity: 0.5;
+    }
+    .diteals-card a{
+        background-color: rgb(40, 110, 40);
+        color: white;
+        padding: 3px 20px ;
+        text-decoration: none;
+    }
+    .fa-cart-shopping{
+        margin-right: 5px;
+    }
+    .header-diteals{
+        margin-bottom: 100px;
+    }

@@ -62,20 +62,18 @@ class BookController extends Controller
         if(! $validator->fails()){
             $books = new Book();
             $books->title = $request->get('title');
-
-            if (request()->hasFile('image')) {
-
-                $image = $request->file('image');
-
-                $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-                $books->image = $imageName;
-                }
-
             $books->price = $request->get('price');
             $books->short_description = $request->get('short_description');
             $books->full_description = $request->get('full_description');
             $books->category_id = $request->get('category_id');
             $books->author_id = $request->get('author_id');
+            
+            if(request()->hasFile('image')){
+                $image = $request->file('image');
+                $imageName = time() . 'image' . $image->getClientOriginalExtension();
+                $image->move('storage/images/book' , $imageName);
+                $books->image = $imageName;
+            }
             $isSaved = $books->save();
 
             return response()->json(['icon' => $isSaved ? 'success' : 'error' , 'title' => $isSaved ? "Created is Successfully" : "Created is Failed"] , $isSaved ? 200 : 400);
@@ -153,7 +151,7 @@ class BookController extends Controller
                 $image = $request->file('image');
 
                 $imageName = time() . 'image.' . $image->getClientOriginalExtension();
-                $image->move('storage/images/admin', $imageName);
+                $image->move('storage/images/book', $imageName);
                 $books->image = $imageName;
                 }
 

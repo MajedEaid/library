@@ -41,7 +41,7 @@
                             <td>{{ $book->id }}</td>
                             <td>{{ $book->title}}</td>
                             <td>
-                                <img class="img-circle img-bordered-sm" src="{{asset('storage/images/book/'.$book->image ?? "")}}" width="60" height="60" alt="Book Image">
+                                <img class="img-circle img-bordered-sm" src="{{asset('storage/images/book/'. $book->image ?? "")}}" width="60" height="60" alt="Book Image">
                             </td>
                             <td>{{ $book->price}}</td>
 

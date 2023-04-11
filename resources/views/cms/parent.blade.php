@@ -216,62 +216,6 @@
                 </ul>
             </li>
 
-            <li class="nav-header">User Mangment</li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user""></i>
-                {{-- <i class="fas fa-user"></i> --}}
-                <p>
-                    Admin
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('admins.index') }}" class="nav-link">
-                        <i class="fas fa-list-ul nav-icon"></i>
-                        {{-- <i class="fas fa-list-ul"></i> --}}
-                        <p>Index</p>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('admins.create') }}" class="nav-link">
-                        <i class="fas fa-plus-circle nav-icon"></i>
-                        {{-- <i class="fas fa-plus-circle"></i> --}}
-                        <p>Create</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-user""></i>
-                {{-- <i class="fas fa-user"></i> --}}
-                <p>
-                    Author
-                    <i class="fas fa-angle-left right"></i>
-                </p>
-                </a>
-                <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('authors.index') }}" class="nav-link">
-                    <i class="fas fa-list-ul nav-icon"></i>
-                    {{-- <i class="fas fa-list-ul"></i> --}}
-                    <p>Index</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('authors.create') }}" class="nav-link">
-                    <i class="fas fa-plus-circle nav-icon"></i>
-                    {{-- <i class="fas fa-plus-circle"></i> --}}
-                    <p>Create</p>
-                    </a>
-                </li>
-                </ul>
-            </li>
-
             <li class="nav-header">Roles && Permission</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -327,7 +271,75 @@
                 </ul>
             </li>
 
+            <li class="nav-header">User Mangment</li>
+            @canany(['Index Admin', 'Create Admin'])
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user""></i>
+                {{-- <i class="fas fa-user"></i> --}}
+                <p>
+                    Admin
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @can('Index Admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admins.index') }}" class="nav-link">
+                        <i class="fas fa-list-ul nav-icon"></i>
+                        {{-- <i class="fas fa-list-ul"></i> --}}
+                        <p>Index</p>
+                        </a>
+                    </li>
+                    @endcan
+                    @can('Create Admin')
+                    <li class="nav-item">
+                        <a href="{{ route('admins.create') }}" class="nav-link">
+                        <i class="fas fa-plus-circle nav-icon"></i>
+                        {{-- <i class="fas fa-plus-circle"></i> --}}
+                        <p>Create</p>
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcanany
+
+            @canany(['Index Author', 'Create Author'])
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user""></i>
+                {{-- <i class="fas fa-user"></i> --}}
+                <p>
+                    Author
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                @can('Index Author')
+                <li class="nav-item">
+                    <a href="{{ route('authors.index') }}" class="nav-link">
+                    <i class="fas fa-list-ul nav-icon"></i>
+                    {{-- <i class="fas fa-list-ul"></i> --}}
+                    <p>Index</p>
+                    </a>
+                </li>
+                @endcan
+                @can('Create Author')
+                <li class="nav-item">
+                    <a href="{{ route('authors.create') }}" class="nav-link">
+                    <i class="fas fa-plus-circle nav-icon"></i>
+                    {{-- <i class="fas fa-plus-circle"></i> --}}
+                    <p>Create</p>
+                    </a>
+                </li>
+                @endcan
+                </ul>
+            </li>
+            @endcanany
+
             <li class="nav-header">Contant Mangment</li>
+            @canany(['Index Country', 'Create Country'])
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
@@ -338,20 +350,26 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @can('Index Country')
                 <li class="nav-item">
                     <a href="{{ route('countries.index') }}" class="nav-link">
                     <i class="fas fa-list-ul nav-icon"></i>
                     <p>Index</p>
                     </a>
                 </li>
+                @endcan
+                @can('Create Country')
                 <li class="nav-item">
                     <a href="{{ route('countries.create') }}" class="nav-link">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>Create</p>
                     </a>
                 </li>
+                @endcan
                 </ul>
             </li>
+            @endcanany
+            @canany(['Index City', 'Create City'])
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
@@ -362,22 +380,27 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @can('Index City')
                     <li class="nav-item">
                         <a href="{{ route('cities.index') }}" class="nav-link">
                         <i class="fas fa-list-ul nav-icon"></i>
                         <p>Index</p>
                         </a>
                     </li>
-
+                    @endcan
+                    @can('Create City')
                     <li class="nav-item">
                         <a href="{{ route('cities.create') }}" class="nav-link">
                         <i class="fas fa-plus-circle nav-icon"></i>
                         <p>Create</p>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </li>
+            @endcanany
 
+            @canany(['Index Category', 'Create Category'])
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
@@ -388,21 +411,27 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @can('Index Category')
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}" class="nav-link">
                     <i class="fas fa-list-ul nav-icon"></i>
                     <p>Index</p>
                     </a>
                 </li>
+                @endcan
+                @can('Create Category')
                 <li class="nav-item">
                     <a href="{{ route('categories.create') }}" class="nav-link">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>Create</p>
                     </a>
                 </li>
+                @endcan
                 </ul>
             </li>
+            @endcanany
 
+            @canany(['Index Book', 'Create Book'])
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
@@ -413,20 +442,25 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @can('Index Book')
                 <li class="nav-item">
                     <a href="{{ route('books.index') }}" class="nav-link">
                     <i class="fas fa-list-ul nav-icon"></i>
                     <p>Index</p>
                     </a>
                 </li>
+                @endcan
+                @can('Create Book')
                 <li class="nav-item">
                     <a href="{{ route('books.create') }}" class="nav-link">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>Create</p>
                     </a>
                 </li>
+                @endcan
                 </ul>
             </li>
+            @endcanany
 
             <li class="nav-header">Seeting</li>
             <li class="nav-item">

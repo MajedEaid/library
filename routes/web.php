@@ -7,8 +7,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cms.button_users1');
 });
 
 Route::prefix('cms/library')->middleware('guest:admin,author')->group(function(){
@@ -32,7 +34,7 @@ Route::prefix('cms/library')->middleware('guest:admin,author')->group(function()
     Route::post('{guard}/login' , [UserAuthController::class , 'login']);
 });
 
-Route::prefix('cms/library')->middleware('guest:admin,author')->group(function(){
+Route::prefix('cms/library')->middleware('auth:admin,author')->group(function(){
     Route::get('logout' , [UserAuthController::class , 'logout'])->name('view.logout');
 
 });
@@ -64,8 +66,17 @@ Route::prefix('cms/library')->middleware('auth:admin,author')->group(function(){
     Route::post('roles_update/{id}' , [RoleController::class,'update'])->name('roles_update');
 
     Route::resource('permissions' ,PermissionController::class);
-    Route::post('permissions_update/{id}' , [PermissionControllerr::class,'update'])->name('permissions_update');
+    Route::post('permissions_update/{id}' , [PermissionController::class,'update'])->name('permissions_update');
 
     Route::resource('roles.permissions' , RolePermissionController::class);
 });
 
+Route::prefix('library/')->group(function () {
+    Route::get('index', [HomeController::class, 'home'])->name('home.page');
+    Route::get('login', [HomeController::class, 'login'])->name('login.page');
+    Route::get('register', [HomeController::class, 'register'])->name('register.page');
+    Route::get('det', [HomeController::class, 'detaile'])->name('det.page');
+    Route::get('card', [HomeController::class, 'card'])->name('card.page');
+
+
+});

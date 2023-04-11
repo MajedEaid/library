@@ -40,7 +40,7 @@ class AdminController extends Controller
     {
         $cities = City::all();
         $roles = Role::where('guard_name' , 'admin')->get();
-        return response()->view('cms.admin.create', compact('cities'));
+        return response()->view('cms.admin.create', compact('cities' , 'roles'));
     }
 
     /**
